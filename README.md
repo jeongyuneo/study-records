@@ -10,6 +10,9 @@
 ## 📌 Spring Boot
 - [DTO의 사용범위](springboot/DTO의%20사용%20범위.md)
 
+## 📌 JPA
+- [Join vs Fetch Join](jpa/Join%20vs%20Fetch%20Join.md)
+
 ## 📌 Etc
 - [RESTful API](etc/RESTful%20API.md)
 
