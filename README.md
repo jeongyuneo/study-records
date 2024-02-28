@@ -9,6 +9,7 @@
 
 ## 📌 Spring
 - [DTO의 사용범위](spring/DTO의%20사용%20범위.md)
+- [AOP](spring/AOP.md)
 
 ## 📌 JPA
 - [Join vs Fetch Join](jpa/Join%20vs%20Fetch%20Join.md)
