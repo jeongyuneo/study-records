@@ -8,6 +8,7 @@
 - [String Pool](java/String%20Pool.md)
 - [Reflection](java/Reflection.md)
 - [Synchronization](java/Synchronization.md)
+- [Garbage Collection](java/Garbage%20Collection.md)
 
 ## 📌 Spring
 - [DTO의 사용범위](spring/DTO의%20사용%20범위.md)
