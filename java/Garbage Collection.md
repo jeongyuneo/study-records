@@ -19,7 +19,7 @@ C나 C++의 경우 Heap 영역의 메모리를 관리하기 위해 코드 레벨
 
 - 개발자는 언제 GC가 메모리를 해제하는지 모름
 
-## Garbage Collection & Reachability
+## 2. Garbage Collection & Reachability
 
 Garbage Collection은 객체가 Garbage인지 판별하는 기준으로 reachability라는 개념을 사용한다. 어떤 객체에 유효한 참조가 있으면 reachable, 없으면 unreachable로 구별하고, unreachable 객체를 대상으로 Garbage Collection을 수행한다.
 
@@ -35,13 +35,13 @@ Garbage Collection은 객체가 Garbage인지 판별하는 기준으로 reachabi
 
 Heap 영역(1번)을 제외한 나머지 3개(2~4번)가 Root Space로, reachability를 판단하는 기준이 된다.
 
-## Garbage Collection Algorithm
+## 3. Garbage Collection Algorithm
 
 Garbage Collection을 성공적으로 수행하는 알고리즘을 설계하기 위해서는 몇 가지 가설이 필요한데, 그 중 대표적인 것이 **Weak Generational Hypothesis**다.
 
 이 가설은 대부분의 객체는 빠르게 unreachable한 상태로 전환된다고 보고, Heap 영역을 기준으로 Old Generation에서 Young Generation으로의 참조 방향은 적게 존재한다고 가정한다.
 
-### 1. Reference Counting
+### 3.1. Reference Counting
 
 ![](https://velog.velcdn.com/images/minide/post/18e13093-712e-4276-95d5-2b67b267cfaa/image.png)
 
@@ -50,7 +50,7 @@ Garbage Collection을 성공적으로 수행하는 알고리즘을 설계하기 
 - **순환 참조 문제**라는 한계가 있음
     - Root Space로부터 연결이 끊긴 순환 참조되는 객체들의 Reference Count가 1로 유지되기 때문에 사용하지 않는 메모리 영역이 해제되지 못하고 Memory Leak 발생
 
-### 2. Mark and Sweep
+### 3.2. Mark and Sweep
 
 ![](https://velog.velcdn.com/images/minide/post/c575ff89-678c-4ade-85fd-899f0e849226/image.png)
 
@@ -58,13 +58,13 @@ Garbage Collection을 성공적으로 수행하는 알고리즘을 설계하기 
     - Mark: Root Space로부터 그래프 순회를 통해 접근 가능한 객체를 찾음
     - Sweep: 연결이 끊어진 객체들 메모리 해제
 
-### 3. Mark and Compact
+### 3.3. Mark and Compact
 
 ![](https://velog.velcdn.com/images/minide/post/dbf91dfb-967b-47e0-b097-2629052cf5f1/image.png)
 
 - Mark and Sweep 알고리즘 이후 메모리를 정리하여, 메모리 파편화 문제를 해결(Compaction)
 
-## JVM의 Garbage Collection
+## 4. JVM의 Garbage Collection
 
 ![](https://velog.velcdn.com/images/minide/post/c6ab6211-1ed8-47b2-bc14-38b5de50412e/image.png)
 
@@ -76,13 +76,13 @@ Garbage Collection을 성공적으로 수행하는 알고리즘을 설계하기 
 - Major GC: Old Generation에서 발생하는 GC
     - Minor GC보다 더 오래 걸림
 
-### Stop The World
+### 4.1. Stop The World
 
 Stop The World는 GC가 동작할 때 GC가 동작하는 메인 스레드가 아닌 나머지 모든 스레드(애플리케이션 실행)가 일시적으로 멈추는 현상이다.
 
 따라서 애플리케이션 성능을 최적화하기 위해서는 Stop The World 시간을 최소화해야 한다.
 
-### Garbage Collection 종류
+### 4.2. Garbage Collection 종류
 
 - Serial GC
     - 하나의 스레드로 GC 실행
